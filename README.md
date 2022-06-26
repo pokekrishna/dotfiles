@@ -10,9 +10,7 @@ source /PATH/TO/THIS/REPO/myzsh.sh
 plugins=(
   git
   golang
-  zsh-autosuggestions
   kubectl
-  osx
 )
 ```
 
