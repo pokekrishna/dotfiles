@@ -16,6 +16,12 @@ plugins=(
 )
 ```
 
+- Mod the _robbyrussell_ theme
+```sh
+cd ~/.oh-my-zsh/themes
+rm robbyrussell.zsh-theme
+ln -s /PATH/TO/THIS/REPO/robbyrussell.zsh-theme
+```
 # .vimrc
 ## Install
 ```sh
