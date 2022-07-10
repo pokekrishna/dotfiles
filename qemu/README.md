@@ -1,4 +1,4 @@
-# DESCRIPTION
+# QEMU
 ## _from-iso.sh_
 VM from installation ISO on Apple Silicon.
 
@@ -14,9 +14,7 @@ In the first time usage, you would want to install the OS on a virtual disk (qco
 - [x] host dir share
 
 ### Mounting host shared directory
-Inside Guest OS
+Inside Guest OS:
 ```sh
-
-sudo mount -t 9p -o trans=virtio host0 /mnt -oversion=9p2000.L
+sudo mount -t 9p -o trans=virtio host0 /mnt -oversion=9p2000.u
 ```
-
