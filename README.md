@@ -26,3 +26,10 @@ ln -s /PATH/TO/THIS/REPO/robbyrussell.zsh-theme
 cd; 
 ln -s /PATH/TO/THIS/REPO/.vimrc .vimrc
 ```
+
+# ssh config
+## Install
+```sh
+cd ~/.ssh;
+ln -s /PATH/TO/THIS/REPO/ssh_config config
+```

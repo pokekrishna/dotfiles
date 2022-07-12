@@ -1,0 +1,4 @@
+Host vm1
+  Hostname localhost
+  User kg
+  Port 2222
