@@ -2,3 +2,4 @@ Host vm1
   Hostname localhost
   User kg
   Port 2222
+  LocalForward 5432 vm1:5432
