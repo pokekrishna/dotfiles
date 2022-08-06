@@ -3,3 +3,4 @@ Host vm1
   User kg
   Port 2222
   LocalForward 5432 vm1:5432
+  IdentityFile ~/.ssh/id_rsa
