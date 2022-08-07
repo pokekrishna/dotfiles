@@ -10,17 +10,21 @@ In the first time usage, you would want to install the OS on a virtual disk (qco
 
 ### Status
 - [x] boot and install
-- [ ] shutdown and starts
-- [ ] ssh from host
+- [x] shutdown and starts
+- [x] ssh from host
 - [ ] host dir share
 
 ### Mounting host shared directory
 Inside Guest OS:
 ```sh
-sudo mount -t 9p -o trans=virtio host0 /mnt -oversion=9p2000.u
+sudo mount -t 9p -o trans=virtio host0 /mnt -oversion=9p2000.L
 ```
 
 or append the following line in `/etc/fstab`
 ```sh
-host0 /mnt 9p rw,relatime,sync,dirsync,access=user,trans=virtio,version=9p2000.u
+host0 /mnt 9p rw,relatime,sync,dirsync,access=user,trans=virtio,version=9p2000.L
 ```
+
+### Performance Enhancement Ideas
+- [ ] try better machine
+- [ ] try better cpu
