@@ -9,7 +9,7 @@ https://repo.extreme-ix.org/ubuntu-releases/22.04/ubuntu-22.04-live-server-amd64
 In the first time usage, you would want to install the OS on a virtual disk (qcow2), so **make sure to uncomment the lines** in the script which have the comment `#Only during OS install`
 
 ### Status
-- [ ] boot and install
+- [x] boot and install
 - [ ] shutdown and starts
 - [ ] ssh from host
 - [ ] host dir share
