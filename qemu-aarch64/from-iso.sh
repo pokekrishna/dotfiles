@@ -6,7 +6,8 @@ efi_firm="$(dirname $(which qemu-img))/../share/qemu/edk2-aarch64-code.fd"
 host_dir="/Users/krishnagupta/Documents/git-repos/"
 
 qemu-system-aarch64 \
-  -serial stdio \
+  -monitor stdio `#This line enables qemu monitor on command line` \
+  `#-serial stdio #This line directs serial port to stdout` \
   -M virt,highmem=off \
   -accel hvf \
   -cpu host \
@@ -25,3 +26,5 @@ qemu-system-aarch64 \
   -netdev user,id=n0,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=n0 \
   -virtfs local,path=${host_dir},mount_tag=host0,security_model=mapped,id=host0 \
 #  -cdrom ../focal-desktop-arm64.iso #Only during OS install
+
+# 
