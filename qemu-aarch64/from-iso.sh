@@ -7,14 +7,15 @@ host_dir="/Users/krishnagupta/Documents/git-repos/"
 
 qemu-system-aarch64 \
   -monitor stdio `#This line enables qemu monitor on command line` \
-  `#-serial stdio #This line directs serial port to stdout` \
-  -M virt,highmem=off \
+  -serial file:/tmp/vm1.sr `#This line directs serial port to a file` \
+  -parallel file:/tmp/vm1.pr `#This line directs parallel port a file` \
+  -M virt,highmem=on \
   -accel hvf \
   -cpu host \
   -smp 4 \
-  -m 2G \
+  -m 6G \
+  `#-device virtio-gpu-pci` `#Add GUI`  \
   -bios ${efi_firm} \
-  -device virtio-gpu-pci \
   -display default,show-cursor=on \
   -device qemu-xhci \
   -device usb-kbd \
@@ -26,5 +27,3 @@ qemu-system-aarch64 \
   -netdev user,id=n0,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=n0 \
   -virtfs local,path=${host_dir},mount_tag=host0,security_model=mapped,id=host0 \
 #  -cdrom ../focal-desktop-arm64.iso #Only during OS install
-
-# 
