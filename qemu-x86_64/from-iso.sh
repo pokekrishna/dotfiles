@@ -15,7 +15,7 @@ qemu-system-x86_64 \
   -smp 4 \
   -m 6G \
   -drive file=ubuntux86_64.qcow2,if=virtio,cache=writethrough \
-  -netdev user,id=n0,hostfwd=tcp::3333-:22 -device virtio-net-pci,netdev=n0 \
+  -netdev user,id=n0,hostfwd=tcp::3333-:22 -device e1000,netdev=n0 \
   -virtfs local,path=${host_dir},mount_tag=host0,security_model=mapped,id=host0 \
   -device virtio-gpu-pci \
   -display default,show-cursor=on \
