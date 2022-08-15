@@ -10,10 +10,13 @@ ISO from: https://cdimage.ubuntu.com/focal/daily-live/current/
 cd /tmp 
 git clone https://github.com/Tunnelblick/Tunnelblick/
 sudo cp -r /private/tmp/Tunnelblick/third_party/tap-notarized.kext /Library/Extensions/
-sudo cp -r /private/tmp/Tunnelblick/third_party/tap-notarized.kext/Contents/Info.plist /Library/LaunchDaemons/net.tunnelblick.tap.plist
+sudo cp -r /PATH/TO/THIS/REPO/qemu-aarch64/net.tunnelblick.tap.plist /Library/LaunchDaemons/
 ```
 If you get prompted with a dialog similar to the following, follow the instructions on dialog 
-> A program tried to load new system extension(s) signed by “Jonathan Bullard” but your security settings do not allow system extensions. To enable them, open the Security & Privacy preference pane
+
+<img src="images/a-program-tried-to-load-a-new-system-extension-2021-02-01.png"> 
+<img src="images/current-security-settings-prevent-installation-of-system-extensions-2021-02-01.png"> 
+<img src="images/you-need-to-modify-security-settings-in-recovery-2021-02-01.png">
 
 Or Open `Preferences` > `Security & Privacy` and follow the instructions from there. 
 
@@ -34,6 +37,10 @@ ifconfig tap0 inet 10.0.2.9/24 #assign some value to tap0
 
 ### 3. Run the <a href="from-iso.sh">Script</a>
 In the first time usage, you would want to install the OS on a virtual disk (qcow2), so **make sure to uncomment the lines** in the script which have the comment `#Only during OS install`
+```sh
+cd ~/Documents/virtual-machines/ubuntuaarch64
+sudo /PATH/TO/THIS/REPO/qemu-aarch64/from-iso.sh
+```
 
 
 ### 4. Setup the Bridge Interface. 📝 _TODO: move this section to from-iso.sh_
@@ -52,6 +59,9 @@ sudo ifconfig bridge1 up
 - [ ] move back redirecting monitor to stdio, instead of serial
 - [ ] optimize nfs performance using cache
 - [ ] Configure LockD with NFSD, if not already configured. Reason: `rspec` `resultset.json.lock` lock error
+- [ ] test on reboot: kext loads up.
+- [ ] deny installation of kernel extensions by user using Mac OS _Recovery Mode_
+- [ ] Vendor the TunnelBlick repo in this repo
 
 ### Mounting host shared directory
 Inside Guest OS:
