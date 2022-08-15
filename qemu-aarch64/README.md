@@ -71,5 +71,5 @@ Inside Guest OS:
 apt install nfs-common #installs mount.nfs command
 
 HOST_MACHINE_ETH0_ADDRESS=192.168.1.12
-sudo mount.nfs -v ${HOST_MACHINE_ETH0_ADDRESS}:/Users/krishnagupta/Documents/git-repos /mnt -o vers=3
+sudo mount.nfs -v ${HOST_MACHINE_ETH0_ADDRESS}:/Users/krishnagupta/Documents/git-repos /mnt -o vers=3,proto=tcp,rsize=2097152,wsize=2097152,timeo=5,retrans=4,rw,async
 ```
