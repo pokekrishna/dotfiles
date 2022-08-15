@@ -5,16 +5,14 @@ VM from installation ISO on Apple Silicon.
 
 ISO from: https://cdimage.ubuntu.com/focal/daily-live/current/ 
 
-<br />
-
-### 2. Set up networking on host (Mac OS)
+### 2. Install TAP device Kernel Extensions on host (Mac OS)
 ```sh
 cd /tmp 
 git clone https://github.com/Tunnelblick/Tunnelblick/
 sudo cp -r /private/tmp/Tunnelblick/third_party/tap-notarized.kext /Library/Extensions/
 sudo cp -r /private/tmp/Tunnelblick/third_party/tap-notarized.kext/Contents/Info.plist /Library/LaunchDaemons/net.tunnelblick.tap.plist
 ```
-Follow the instructions if you get prompted with a dialog similar to 
+If you get prompted with a dialog similar to the following, follow the instructions on dialog 
 > A program tried to load new system extension(s) signed by “Jonathan Bullard” but your security settings do not allow system extensions. To enable them, open the Security & Privacy preference pane
 
 Or Open `Preferences` > `Security & Privacy` and follow the instructions from there. 
@@ -23,7 +21,7 @@ Or Open `Preferences` > `Security & Privacy` and follow the instructions from th
 
 After allowing kernel extensions in Recover mode, reboot your Mac and open `Preferences` > `Security & Privacy` to 'Allow' the Tap kernel extensions you copied earlier. A Restart may be required.
 
-> ℹ️ If `kextstat` does not show net.tunnelblick.tap in the list, use `sudo kextload /Library/Extensions/tap-notarized.kext`. \
+> 💡 If `kextstat` does not show net.tunnelblick.tap in the list, use `sudo kextload /Library/Extensions/tap-notarized.kext`. \
 Will be needed on each bootup
 
 <!-- **In a separate shell, which you make sure to keep alive**
@@ -34,12 +32,9 @@ ifconfig tap0
 ifconfig tap0 inet 10.0.2.9/24 #assign some value to tap0
 ``` -->
 
-<br />
-
-### 3. Run the Script
+### 3. Run the <a href="from-iso.sh">Script</a>
 In the first time usage, you would want to install the OS on a virtual disk (qcow2), so **make sure to uncomment the lines** in the script which have the comment `#Only during OS install`
 
-<br />
 
 ### 4. Setup the Bridge Interface. 📝 _TODO: move this section to from-iso.sh_
 ```sh
@@ -47,7 +42,6 @@ sudo ifconfig bridge create # create a bridge interface
 sudo ifconfig bridge1 addm tap0 addm en0 # add en0 and tap0 as member to bridge1
 sudo ifconfig bridge1 up
 ```
-
 
 ## Status
 - [x] boot and install
