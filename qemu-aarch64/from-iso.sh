@@ -6,7 +6,9 @@ efi_firm="$(dirname $(which qemu-img))/../share/qemu/edk2-aarch64-code.fd"
 host_dir="/Users/krishnagupta/Documents/git-repos/"
 
 qemu-system-aarch64 \
-  -monitor stdio `#This line enables qemu monitor on command line` \
+  `# Toggle commenting between following two lines to use monitor mode or serial mode `\
+  `# -monitor stdio #This line enables qemu monitor on command line` \
+  -serial stdio `#This line enables serial mode on command line` \
   -serial file:/tmp/vm1.sr `#This line directs serial port to a file` \
   -parallel file:/tmp/vm1.pr `#This line directs parallel port a file` \
   -M virt,highmem=on \
@@ -24,6 +26,5 @@ qemu-system-aarch64 \
   -device hda-duplex \
   -drive file=ubuntu_ovmf_vars.fd,if=pflash,index=1,format=raw \
   -drive file=ubuntu.qcow2,if=virtio,cache=writethrough \
-  -netdev user,id=n0,hostfwd=tcp::2222-:22 -device e1000,netdev=n0 \
-  -virtfs local,path=${host_dir},mount_tag=host0,security_model=mapped,id=host0 \
+  -netdev tap,id=mytap0,ifname=tap0,script=no,downscript=no -device e1000,netdev=mytap0,mac=52:55:00:d1:55:01 \
 #  -cdrom ../focal-desktop-arm64.iso #Only during OS install
