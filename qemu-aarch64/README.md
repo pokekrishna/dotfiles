@@ -55,8 +55,8 @@ sudo ifconfig bridge1 up
 ### Mounting host shared directory
 Inside Guest OS:
 ```sh
-HOST_MACHINE_ETH0_ADDRESS=192.168.1.12
-
 apt install nfs-common #installs mount.nfs command
+
+HOST_MACHINE_ETH0_ADDRESS=192.168.1.12
 sudo mount.nfs -v ${HOST_MACHINE_ETH0_ADDRESS}:/Users/krishnagupta/Documents/git-repos /mnt -o vers=3
 ```
