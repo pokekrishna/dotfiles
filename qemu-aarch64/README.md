@@ -54,6 +54,9 @@ sudo ifconfig bridge1 up
 - [x] shutdown and starts
 - [x] ssh from host (using tap device)
 - [x] host dir share (using nfs)
+- [ ] get vm ip automatically and use while mounting nfs drive, ssh_config
+- [ ] move back redirecting monitor to stdio, instead of serial
+- [ ] optimize nfs performance using cache
 
 ### Mounting host shared directory
 Inside Guest OS:
