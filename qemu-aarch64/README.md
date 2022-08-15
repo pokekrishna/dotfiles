@@ -51,6 +51,7 @@ sudo ifconfig bridge1 up
 - [ ] get vm ip automatically and use while mounting nfs drive, ssh_config
 - [ ] move back redirecting monitor to stdio, instead of serial
 - [ ] optimize nfs performance using cache
+- [ ] Configure LockD with NFSD, if not already configured. Reason: `rspec` `resultset.json.lock` lock error
 
 ### Mounting host shared directory
 Inside Guest OS:
