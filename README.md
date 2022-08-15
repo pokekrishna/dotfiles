@@ -6,11 +6,14 @@ source /PATH/TO/THIS/REPO/myzsh.sh
 ``` 
 
 - Edit the list of plugins to enable in the ~/.zshrc
+  - For VS Code plugin, open the Command Palette via (F1 or ⇧⌘P) and type shell command > choose ...
+    > Shell Command: Install 'code' command in PATH
 ```sh
 plugins=(
   git
   golang
   kubectl
+  vscode
 )
 ```
 
