@@ -15,7 +15,9 @@ sudo cp -r /PATH/TO/THIS/REPO/qemu-aarch64/net.tunnelblick.tap.plist /Library/La
 If you get prompted with a dialog similar to the following, follow the instructions on dialog 
 
 <img src="images/a-program-tried-to-load-a-new-system-extension-2021-02-01.png"> 
+
 <img src="images/current-security-settings-prevent-installation-of-system-extensions-2021-02-01.png"> 
+
 <img src="images/you-need-to-modify-security-settings-in-recovery-2021-02-01.png">
 
 Or Open `Preferences` > `Security & Privacy` and follow the instructions from there. 
