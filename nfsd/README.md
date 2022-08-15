@@ -17,6 +17,7 @@ sudo nfsd restart
 ## VM Client
 ```sh
 HOST_MACHINE_ETH0_ADDRESS=192.168.1.12
+
 apt install nfs-common #installs mount.nfs command
 sudo mount.nfs -v ${HOST_MACHINE_ETH0_ADDRESS}:/Users/krishnagupta/Documents/git-repos /mnt -o vers=3
 ```
