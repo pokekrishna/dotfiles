@@ -52,11 +52,21 @@ sudo ifconfig bridge1 addm tap0 addm en0 # add en0 and tap0 as member to bridge1
 sudo ifconfig bridge1 up
 ```
 
+### 5. Mounting host shared directory
+Inside Guest OS:
+```sh
+apt install nfs-common #installs mount.nfs command
+
+HOST_MACHINE_ETH0_ADDRESS=192.168.1.12
+sudo mount.nfs -v ${HOST_MACHINE_ETH0_ADDRESS}:/Users/krishnagupta/Documents/git-repos /mnt -o vers=3
+```
+
 ## Status
 - [x] boot and install
 - [x] shutdown and starts
 - [x] ssh from host (using tap device)
 - [x] host dir share (using nfs)
+- [ ] automount dir share
 - [ ] get vm ip automatically and use while mounting nfs drive, ssh_config
 - [ ] move back redirecting monitor to stdio, instead of serial
 - [ ] optimize nfs performance using cache
@@ -66,11 +76,3 @@ sudo ifconfig bridge1 up
 - [ ] Vendor the TunnelBlick repo in this repo
 - [ ] Instead of en0, use something else so that change in host wifi/eth does not disrupt nfs and ssh etc
 
-### Mounting host shared directory
-Inside Guest OS:
-```sh
-apt install nfs-common #installs mount.nfs command
-
-HOST_MACHINE_ETH0_ADDRESS=192.168.1.12
-sudo mount.nfs -v ${HOST_MACHINE_ETH0_ADDRESS}:/Users/krishnagupta/Documents/git-repos /mnt -o vers=3
-```
