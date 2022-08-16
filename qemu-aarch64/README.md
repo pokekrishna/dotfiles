@@ -64,6 +64,7 @@ sudo ifconfig bridge1 up
 - [ ] test on reboot: kext loads up.
 - [ ] deny installation of kernel extensions by user using Mac OS _Recovery Mode_
 - [ ] Vendor the TunnelBlick repo in this repo
+- [ ] Instead of en0, use something else so that change in host wifi/eth does not disrupt nfs and ssh etc
 
 ### Mounting host shared directory
 Inside Guest OS:
