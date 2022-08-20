@@ -1,5 +1,7 @@
 # NFS Daemon Setup Instructions
 
+> NOTE: Samba Share has proven to be 2x better at file sharing
+
 ## MacOS Host
 Enable full disk access to `nfsd` using `Security & Privacy`
 
@@ -14,10 +16,17 @@ sudo nfsd checkexports && \
 sudo nfsd restart
 ```
 
-## VM Client
-```sh
-HOST_MACHINE_ETH0_ADDRESS=192.168.1.12
+## NFS Server Tuning
+> _Following are the possible tuning parameters. Benchmarking Pending_
 
-apt install nfs-common #installs mount.nfs command
-sudo mount.nfs -v ${HOST_MACHINE_ETH0_ADDRESS}:/Users/krishnagupta/Documents/git-repos /mnt -o vers=3
+All tunables available on the man page `nfs.conf(5)`
+
+add the following in `/etc/nfs.conf`
+```ini
+nfs.server.nfsd_threads=18
+nfs.server.async=1
+nfs.server.udp=1
 ```
+
+`sudo nfsd update` to reflect the changes
+

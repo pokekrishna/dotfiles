@@ -47,17 +47,29 @@ sudo /PATH/TO/THIS/REPO/qemu-aarch64/from-iso.sh
 
 ### 4. Setup the Bridge Interface. 📝 _TODO: move this section to from-iso.sh_
 ```sh
+sudo ifconfig en0 inet 192.253.255.1/24 alias
 sudo ifconfig bridge create # create a bridge interface
 sudo ifconfig bridge1 addm tap0 addm en0 # add en0 and tap0 as member to bridge1
 sudo ifconfig bridge1 up
 ```
 
+
+### 5. Overwrite the vm address using Serial 📝 _TODO: move this section to from-iso.sh_
+```sh
+sudo ip addr add 192.253.255.2/24 dev enp0s3
+echo  "192.253.255.1 host_machine" >> /etc/hosts
+```
+
+### Mounting host shared directory
+[Follow the instructions from smbd](../smbd/README.md#mount-on-linux-guest)
+
+
 ## Status
 - [x] boot and install
 - [x] shutdown and starts
 - [x] ssh from host (using tap device)
-- [x] host dir share (using nfs)
-- [ ] get vm ip automatically and use while mounting nfs drive, ssh_config
+- [x] host dir share
+
 - [ ] move back redirecting monitor to stdio, instead of serial
 - [ ] optimize nfs performance using cache
 - [ ] Configure LockD with NFSD, if not already configured. Reason: `rspec` `resultset.json.lock` lock error
@@ -65,11 +77,3 @@ sudo ifconfig bridge1 up
 - [ ] deny installation of kernel extensions by user using Mac OS _Recovery Mode_
 - [ ] Vendor the TunnelBlick repo in this repo
 
-### Mounting host shared directory
-Inside Guest OS:
-```sh
-apt install nfs-common #installs mount.nfs command
-
-HOST_MACHINE_ETH0_ADDRESS=192.168.1.12
-sudo mount.nfs -v ${HOST_MACHINE_ETH0_ADDRESS}:/Users/krishnagupta/Documents/git-repos /mnt -o vers=3,proto=tcp,rsize=2097152,wsize=2097152,timeo=5,retrans=4,rw,async
-```
