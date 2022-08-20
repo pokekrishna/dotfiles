@@ -53,18 +53,6 @@ sudo ifconfig bridge1 addm tap0 addm en0 # add en0 and tap0 as member to bridge1
 sudo ifconfig bridge1 up
 ```
 
-<<<<<<< HEAD
-### 5. Mounting host shared directory
-Inside Guest OS:
-```sh
-apt install nfs-common #installs mount.nfs command
-
-HOST_MACHINE_ETH0_ADDRESS=192.168.1.12
-sudo mount.nfs -v ${HOST_MACHINE_ETH0_ADDRESS}:/Users/krishnagupta/Documents/git-repos /mnt -o vers=3
-```
-
-=======
-
 ### 5. Overwrite the vm address using Serial 📝 _TODO: move this section to from-iso.sh_
 ```sh
 sudo ip addr add 192.253.255.2/24 dev enp0s3
