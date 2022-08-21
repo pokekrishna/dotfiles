@@ -14,11 +14,9 @@ sudo cp -r /PATH/TO/THIS/REPO/qemu-aarch64/net.tunnelblick.tap.plist /Library/La
 ```
 If you get prompted with a dialog similar to the following, follow the instructions on dialog 
 
-<img src="images/a-program-tried-to-load-a-new-system-extension-2021-02-01.png"> 
-<br />
-<img src="images/current-security-settings-prevent-installation-of-system-extensions-2021-02-01.png"> 
-<br />
-<img src="images/you-need-to-modify-security-settings-in-recovery-2021-02-01.png">
+<img width="200" src="images/a-program-tried-to-load-a-new-system-extension-2021-02-01.png"> 
+<img width="400" src="images/current-security-settings-prevent-installation-of-system-extensions-2021-02-01.png"> 
+<img width="150" src="images/you-need-to-modify-security-settings-in-recovery-2021-02-01.png">
 
 Or Open `Preferences` > `Security & Privacy` and follow the instructions from there. 
 
@@ -56,7 +54,7 @@ sudo ifconfig bridge1 up
 ### 5. Overwrite the vm address using Serial 📝 _TODO: move this section to from-iso.sh_
 ```sh
 sudo ip addr add 192.253.255.2/24 dev enp0s3
-echo  "192.253.255.1 host_machine" >> /etc/hosts
+grep host_machine /etc/hosts || echo  "192.253.255.1 host_machine" >> /etc/hosts
 ```
 
 ### Mounting host shared directory
@@ -68,13 +66,10 @@ echo  "192.253.255.1 host_machine" >> /etc/hosts
 - [x] shutdown and starts
 - [x] ssh from host (using tap device)
 - [x] host dir share
+- [ ] access vpn routing 
 - [ ] automount dir share
 - [ ] get vm ip automatically and use while mounting nfs drive, ssh_config
 - [ ] move back redirecting monitor to stdio, instead of serial
-- [ ] optimize nfs performance using cache
-- [ ] Configure LockD with NFSD, if not already configured. Reason: `rspec` `resultset.json.lock` lock error
-- [ ] test on reboot: kext loads up.
 - [ ] deny installation of kernel extensions by user using Mac OS _Recovery Mode_
 - [ ] Vendor the TunnelBlick repo in this repo
-- [ ] Instead of en0, use something else so that change in host wifi/eth does not disrupt nfs and ssh etc
 
