@@ -51,10 +51,13 @@ sudo ifconfig bridge1 addm tap0 addm en0 # add en0 and tap0 as member to bridge1
 sudo ifconfig bridge1 up
 ```
 
-### 5. Overwrite the vm address using Serial 📝 _TODO: move this section to from-iso.sh_
+### 5. Overwrite the vm networking using Serial 📝 _TODO: move this section to from-iso.sh_
 ```sh
 sudo ip addr add 192.168.255.2/24 dev enp0s3
 grep host_machine /etc/hosts || echo  "192.168.255.1 host_machine" >> /etc/hosts
+
+ip r del default via 192.168.254.2 dev enp0s4 proto dhcp metric 101
+ip r add 172.16/16 via 192.168.254.2 dev enp0s4 proto dhcp metric 101 # VPN route, add more such if needed
 ```
 
 ### Mounting host shared directory

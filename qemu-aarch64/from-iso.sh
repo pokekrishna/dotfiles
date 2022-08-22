@@ -27,4 +27,5 @@ qemu-system-aarch64 \
   -drive file=ubuntu_ovmf_vars.fd,if=pflash,index=1,format=raw \
   -drive file=ubuntu.qcow2,if=virtio,cache=writethrough \
   -netdev tap,id=mytap0,ifname=tap0,script=no,downscript=no -device e1000,netdev=mytap0,mac=52:55:00:d1:55:01 \
+  -netdev user,id=myslirp0,net=192.168.254.0/24,dhcpstart=192.168.254.9 -device e1000,netdev=myslirp0 \
 #  -cdrom ../focal-desktop-arm64.iso #Only during OS install
