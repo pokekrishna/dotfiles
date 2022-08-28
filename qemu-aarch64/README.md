@@ -42,26 +42,31 @@ cd ~/Documents/virtual-machines/ubuntuaarch64
 sudo /PATH/TO/THIS/REPO/qemu-aarch64/from-iso.sh
 ```
 
+### 4. Copy networking files to /etc/netplan/ using `serial` mode
+- [02-configure-guest-network.yaml](02-configure-guest-network.yaml)
+- [03-configure-guest-slirp-network.yaml](03-configure-guest-slirp-network.yaml)
 
-### 4. Setup the Bridge Interface. 📝 _TODO: move this section to from-iso.sh_
-```sh
-sudo ifconfig en0 inet 192.168.255.1/24 alias
-sudo ifconfig bridge create # create a bridge interface
-sudo ifconfig bridge1 addm tap0 addm en0 # add en0 and tap0 as member to bridge1
-sudo ifconfig bridge1 up
-```
 
-### 5. Overwrite the vm networking using Serial 📝 _TODO: move this section to from-iso.sh_
+### 5. Auto Mounting host shared directory
 ```sh
-sudo ip addr add 192.168.255.2/24 dev enp0s3
 grep host_machine /etc/hosts || echo  "192.168.255.1 host_machine" >> /etc/hosts
-
-ip r del default via 192.168.254.2 dev enp0s4 proto dhcp metric 101
-ip r add 172.16/16 via 192.168.254.2 dev enp0s4 proto dhcp metric 101 # VPN route, add more such if needed
 ```
 
-### Mounting host shared directory
-[Follow the instructions from smbd](../smbd/README.md#mount-on-linux-guest)
+Then follow the [instructions from smbd](../smbd/README.md#mount-on-linux-guest) section
+
+## Troubleshooting 
+### 1. Guest Networking
+
+#### 1.1 Refresh networking from within guest
+```sh
+sudo netplan apply
+```
+
+#### 1.2 Add more VPN routes
+This routes will have affect until restart
+```sh
+ip r add 10.10/16 via 192.168.254.2 dev enp0s4 metric 90
+```
 
 
 ## Status
@@ -69,9 +74,9 @@ ip r add 172.16/16 via 192.168.254.2 dev enp0s4 proto dhcp metric 101 # VPN rout
 - [x] shutdown and starts
 - [x] ssh from host (using tap device)
 - [x] host dir share
-- [ ] access vpn routing 
-- [ ] automount dir share
-- [ ] get vm ip automatically and use while mounting nfs drive, ssh_config
+- [x] access vpn routing 
+- [x] automount dir share
+- [x] get vm ip automatically and use while mounting nfs drive, ssh_config
 - [ ] move back redirecting monitor to stdio, instead of serial
 - [ ] deny installation of kernel extensions by user using Mac OS _Recovery Mode_
 - [ ] Vendor the TunnelBlick repo in this repo
