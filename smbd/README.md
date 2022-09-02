@@ -19,3 +19,13 @@ mount -t cifs -o rw,vers=3.0,cache=loose,nostrictsync,handlecache,fsc,actimeo=60
 ```sh
 //host_machine/git-repos /mnt cifs rw,vers=3.0,cache=loose,nostrictsync,handlecache,fsc,actimeo=60,credentials=/root/samba-share-creds
 ```
+
+
+# Troubleshooting
+## 1. Host (SMBd) not responding
+To restart smbd
+```sh
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.smbd.plist
+
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.smbd.plist
+```
