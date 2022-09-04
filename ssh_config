@@ -1,6 +1,6 @@
 Host vm1
   Hostname 192.168.255.2
-  User kg
+  User root
   Port 22
   LocalForward 5432 vm1:5432
   IdentityFile ~/.ssh/id_rsa
