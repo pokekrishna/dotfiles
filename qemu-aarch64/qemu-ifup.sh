@@ -33,7 +33,7 @@ ifconfig ${HOST_BRIDGE_IF} down
 
 # Add an alias ip to host's interface. This will be the main 
 # communication IP
-ifconfig ${HOST_ETH_IF}} inet ${HOST_MACHINE_ADDR} alias
+ifconfig ${HOST_ETH_IF} inet ${HOST_MACHINE_ADDR} alias
 
 # create the bridge interface
 ifconfig ${HOST_BRIDGE_IF} create 
