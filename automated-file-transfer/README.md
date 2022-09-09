@@ -47,5 +47,6 @@ alias run_rsync='rsync -a -P -e "ssh -T -c arcfour -o Compression=no -x" $DIR vm
 run_rsync; fswatch -o $DIR | while read f; do run_rsync; done
  -->
 
-
+## TODO
+[] sometimes control file keeps lingering, upon which the ssh multiplexing is disabled
 
