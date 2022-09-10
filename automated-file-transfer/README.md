@@ -27,26 +27,3 @@ run_rsync; fswatch -o $DIR | while read f; do run_rsync; done
 
 ssh -O exit -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" vm1 # TERMINATE
 ```
-<!-- ## Graveyard notes
-ssh multiplexing 
-    https://unix.stackexchange.com/questions/50508/reusing-ssh-session-for-repeated-rsync-commands
-
-    mkdir $HOME/.ssh/ctl
-    ssh -nNf -o ControlMaster=yes -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" vm1
-
-
-rsync 
-    alias run_rsync='rsync -azP --exclude ".*/" --exclude ".*" --exclude "tmp/" ~/Documents/repos/my_repository username@host:~'
-run_rsync; fswatch -o . | while read f; do run_rsync; done
-
-
-
-
-DIR=/Users/krishnagupta/Documents/git-repos/lambda
-alias run_rsync='rsync -a -P -e "ssh -T -c arcfour -o Compression=no -x" $DIR vm1:$DIR'
-run_rsync; fswatch -o $DIR | while read f; do run_rsync; done
- -->
-
-## TODO
-[] sometimes control file keeps lingering, upon which the ssh multiplexing is disabled
-

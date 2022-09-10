@@ -1,12 +1,9 @@
 Host vm1
   Hostname 192.168.255.2
-  User root
-  Port 22
-  LocalForward 5432 vm1:5432
-  IdentityFile ~/.ssh/id_rsa
-
-Host vm2
-  Hostname localhost
   User kg
-  Port 3333
+  Port 22
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets-%r@%h-%p
+  ControlPersist yes
   IdentityFile ~/.ssh/id_rsa
+  Compression no
