@@ -3,7 +3,11 @@
 ### 1. Get ISO
 VM from installation ISO on Apple Silicon.
 
-ISO from: https://cdimage.ubuntu.com/focal/daily-live/current/ 
+ISO from: https://ubuntu.com/download/server/arm
+
+Tested on:
+  - Ubuntu Server 22.04 LTS. - Doesn't work
+  - Ubuntu Server 20.04 LTS. - Works ✅
 
 ### 2. Install TAP device Kernel Extensions on host (Mac OS)
 ```sh
@@ -45,14 +49,24 @@ sudo /PATH/TO/THIS/REPO/qemu-aarch64/from-iso.sh
 ### 4. Copy networking files to /etc/netplan/ using `serial` mode
 - [02-configure-guest-network.yaml](02-configure-guest-network.yaml)
 - [03-configure-guest-slirp-network.yaml](03-configure-guest-slirp-network.yaml)
-
+```sh
+sudo netplan apply
+```
 
 ### 5. Auto Mounting host shared directory
 ```sh
 grep host_machine /etc/hosts || echo  "192.168.255.1 host_machine" >> /etc/hosts
 ```
-
 Then follow the [instructions from smbd](../smbd/README.md#mount-on-linux-guest) section
+
+### 6. Edit Sudoers
+`sudo visudo` to enable NOPASSWD for the sudo group 
+```
+# Allow members of group sudo to execute any command
+%sudo	ALL=(ALL:ALL) NOPASSWD: ALL
+```
+
+
 
 ## Troubleshooting 
 ### 1. Guest Networking
@@ -76,7 +90,7 @@ ip r add 10.10/16 via 192.168.254.2 dev enp0s4 metric 90
 - [x] host dir share
 - [x] access vpn routing 
 - [x] automount dir share
-- [x] get vm ip automatically and use while mounting nfs drive, ssh_config
+- [] get vm ip automatically and use while mounting nfs drive, ssh_config
 - [ ] move back redirecting monitor to stdio, instead of serial
 - [ ] deny installation of kernel extensions by user using Mac OS _Recovery Mode_
 - [ ] Vendor the TunnelBlick repo in this repo

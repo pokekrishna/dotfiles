@@ -1,6 +1,6 @@
 Host vm1
   Hostname 192.168.255.2
-  User root
+  User kg
   Port 22
   ControlMaster yes
   ControlPath ~/.ssh/sockets-%r@%h-%p
