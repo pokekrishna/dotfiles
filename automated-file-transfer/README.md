@@ -18,7 +18,7 @@ brew install fswatch
 ssh -O exit -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" vm1 # TERMINATE
 
 mkdir $HOME/.ssh/ctl
-ssh -nNf -T -o Compression=no -x -c aes128-gcm@openssh.com -o ControlMaster=yes -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" vm1
+ssh -nNf -T -o Compression=no -x -c aes128-gcm@openssh.com -o ControlMaster=auto -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" vm1
 
 DIR=/Users/krishnagupta/Documents/git-repos/lambda ## NOTE; should not end with slash '/'
 function run_rsync() { rsync --delete -a -P -e "ssh -T -o Compression=no -x -c aes128-gcm@openssh.com -o 'ControlPath=$HOME/.ssh/ctl/%L-%r@%h:%p' " $DIR/ vm1:$DIR } ;
