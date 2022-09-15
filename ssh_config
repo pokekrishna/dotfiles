@@ -6,4 +6,4 @@ Host vm1
   ControlPath ~/.ssh/sockets-%r@%h-%p
   ControlPersist yes
   IdentityFile ~/.ssh/id_rsa
-  Compression no
+  StrictHostKeyChecking no
