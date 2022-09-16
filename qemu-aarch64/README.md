@@ -57,7 +57,7 @@ sudo netplan apply
 ```sh
 grep host_machine /etc/hosts || echo  "192.168.255.1 host_machine" >> /etc/hosts
 ```
-To Use Rsync (**recommended**): Follow the [instructions from automated-file-transfer] (../automated-file-transfer/README.md)
+To Use Rsync (**recommended**): Follow the [instructions from automated-file-transfer](../automated-file-transfer/README.md#guest)
 
 To Use Samba: Then follow the [instructions from smbd](../smbd/README.md#mount-on-linux-guest) section
 
