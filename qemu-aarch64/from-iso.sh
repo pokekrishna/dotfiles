@@ -27,7 +27,7 @@ qemu-system-aarch64 \
   -drive file=ubuntu_ovmf_vars.fd,if=pflash,index=1,format=raw \
   -object iothread,id=io1 \
   -device virtio-blk-pci,drive=disk0,iothread=io1 \
-  -drive if=none,id=disk0,cache=none,format=raw,aio=threads,file=ubuntu-server.img \
+  -drive if=none,id=disk0,cache=unsafe,format=raw,aio=threads,file=ubuntu-server.img \
   -netdev tap,id=mytap0,ifname=tap0,script=/Users/krishnagupta/Documents/git-repos/dotfiles/qemu-aarch64/qemu-ifup.sh,downscript=/Users/krishnagupta/Documents/git-repos/dotfiles/qemu-aarch64/qemu-ifdown.sh -device e1000,netdev=mytap0,mac=52:55:00:d1:55:02 \
   -netdev user,id=myslirp0,net=192.168.254.0/24,dhcpstart=192.168.254.9 -device e1000,netdev=myslirp0 \
   # -cdrom ubuntu-20.04.5-live-server-arm64.iso #Only during OS install
