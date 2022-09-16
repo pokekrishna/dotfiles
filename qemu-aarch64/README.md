@@ -53,11 +53,13 @@ sudo /PATH/TO/THIS/REPO/qemu-aarch64/from-iso.sh
 sudo netplan apply
 ```
 
-### 5. Auto Mounting host shared directory
+### 5. Sharing Directory between Host and Guest
 ```sh
 grep host_machine /etc/hosts || echo  "192.168.255.1 host_machine" >> /etc/hosts
 ```
-Then follow the [instructions from smbd](../smbd/README.md#mount-on-linux-guest) section
+To Use Rsync (**recommended**): Follow the [instructions from automated-file-transfer] (../automated-file-transfer/README.md)
+
+To Use Samba: Then follow the [instructions from smbd](../smbd/README.md#mount-on-linux-guest) section
 
 ### 6. Edit Sudoers
 `sudo visudo` to enable NOPASSWD for the sudo group 
