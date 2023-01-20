@@ -14,8 +14,8 @@ qemu-system-aarch64 \
   -machine virt,highmem=on \
   -accel hvf \
   -cpu host \
-  -smp cpus=4 \
-  -m 6G \
+  -smp cpus=6 \
+  -m 8G \
   `#-device virtio-gpu-pci` `#Add GUI`  \
   -bios ${efi_firm} \
   -display default,show-cursor=on \
