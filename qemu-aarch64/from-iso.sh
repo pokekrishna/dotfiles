@@ -14,7 +14,7 @@ qemu-system-aarch64 \
   -machine virt,highmem=on \
   -accel hvf \
   -cpu host \
-  -smp cpus=6 \
+  -smp cpus=5 \
   -m 8G \
   `#-device virtio-gpu-pci` `#Add GUI`  \
   -bios ${efi_firm} \
@@ -22,8 +22,8 @@ qemu-system-aarch64 \
   -device qemu-xhci \
   -device usb-kbd \
   -device usb-tablet \
-  -device intel-hda \
-  -device hda-duplex \
+  `# -device intel-hda #This and next line enabled audio device` \
+  `# -device hda-duplex` \
   -drive file=ubuntu_ovmf_vars.fd,if=pflash,index=1,format=raw \
   -object iothread,id=io1 \
   -device virtio-blk-pci,drive=disk0,iothread=io1 \
