@@ -1,6 +1,6 @@
 # Aarch 64 VM on M1
 ## Roadmap
-- [] Change host<>guest networking using vmnet and remove documentation related to tuntaposx
+- [ ] Change host<>guest networking using vmnet and remove documentation related to tuntaposx
   - [Apple VMNet.Framework](https://developer.apple.com/documentation/vmnet)
   - [QEMU 7.1 has built in support for VMNET](https://github.com/lima-vm/socket_vmnet#how-is-socket_vmnet-related-to-qemu-builtin-vmnet-support)
   - [An example that makes use of QEMU+VMNet](https://gist.github.com/max-i-mil/f44e8e6f2416d88055fc2d0f36c6173b)
