@@ -28,6 +28,7 @@ qemu-system-aarch64 \
   -object iothread,id=io1 \
   -device virtio-blk-pci,drive=disk0,iothread=io1 \
   -drive if=none,id=disk0,cache=unsafe,format=raw,aio=threads,file=ubuntu-server.img \
-  -netdev vmnet-shared,id=net0 `# networking backend (present in the host)` \
-  -device virtio-net-pci,netdev=net0 `# networking frontend (present in the guest)` \
+  -netdev vmnet-shared,id=net0 `# networking device (present in the host)` \
+  -device virtio-net-pci,netdev=net0,mq=on,vectors=10 `# networking driver (present in the guest)` \
+  -d guest_errors,int \
   # -cdrom ubuntu-20.04.5-live-server-arm64.iso #Only during OS install
