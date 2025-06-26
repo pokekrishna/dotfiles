@@ -9,9 +9,10 @@
 ### 1. Get ISO
 VM from installation ISO on Apple Silicon.
 
-ISO from: https://ubuntu.com/download/server/arm
+Download ISO from: https://ubuntu.com/download/server/arm and rename is as `ubuntu-live-server-arm64.iso`
 
 Tested on:
+  - Ubuntu Server 22.04 LTS. - Works ✅
   - Ubuntu Server 22.04 LTS. - Doesn't work
   - Ubuntu Server 20.04 LTS. - Works ✅
 

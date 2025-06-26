@@ -1,7 +1,13 @@
+####
+
+# useful read: https://github.com/ghik/kubernetes-the-harder-way/blob/main/docs/01_Learning_How_to_Run_VMs_with_QEMU.md#uefi
+
+####
+
 # qemu-img create -f raw -o preallocation=full ubuntu-server.img 60G #Only during OS install
 
-
 efi_firm="$(dirname $(which qemu-img))/../share/qemu/edk2-aarch64-code.fd"
+
 # dd if=/dev/zero conv=sync bs=1m count=64 of=ubuntu_ovmf_vars.fd #Only during OS install
  
 
@@ -29,6 +35,6 @@ qemu-system-aarch64 \
   -device virtio-blk-pci,drive=disk0,iothread=io1 \
   -drive if=none,id=disk0,cache=unsafe,format=raw,aio=threads,file=ubuntu-server.img \
   -netdev vmnet-shared,id=net0 `# networking device (present in the host)` \
-  -device virtio-net-pci,netdev=net0,mq=on,vectors=10 `# networking driver (present in the guest)` \
+  -device virtio-net-pci,netdev=net0 `# networking driver (present in the guest)` \
   -d guest_errors,int \
-  # -cdrom ubuntu-20.04.5-live-server-arm64.iso #Only during OS install
+  # -cdrom ubuntu-live-server-arm64.iso #Only during OS install
