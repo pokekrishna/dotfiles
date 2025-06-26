@@ -25,6 +25,7 @@ sudo /PATH/TO/THIS/REPO/qemu-aarch64/from-iso.sh
 ```
 
 ### 3. Copy networking files to /etc/netplan/ using `serial` mode
+IMPORTANT: NOT REQUIRED IF YOU ARE NOT USING VMNET SHARED DEVICE
 - [02-configure-guest-network.yaml](02-configure-guest-network.yaml)
 ```sh
 sudo netplan apply

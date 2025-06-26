@@ -7,3 +7,24 @@ Host vm1
   ControlPersist yes
   IdentityFile ~/.ssh/id_rsa
   StrictHostKeyChecking no
+
+Host vm2
+  Hostname localhost
+  User kg
+  Port 2222
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets-%r@%h-%p
+  ControlPersist yes
+  IdentityFile ~/.ssh/id_rsa
+  StrictHostKeyChecking no
+
+
+Host vm2b
+  Hostname 192.168.1.15
+  User kg
+  Port 22
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets-%r@%h-%p
+  ControlPersist yes
+  IdentityFile ~/.ssh/id_rsa
+  StrictHostKeyChecking no

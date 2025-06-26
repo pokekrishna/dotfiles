@@ -34,7 +34,19 @@ qemu-system-aarch64 \
   -object iothread,id=io1 \
   -device virtio-blk-pci,drive=disk0,iothread=io1 \
   -drive if=none,id=disk0,cache=unsafe,format=raw,aio=threads,file=ubuntu-server.img \
-  -netdev vmnet-shared,id=net0 `# networking device (present in the host)` \
+  -netdev vmnet-bridged,id=net0,ifname=en0 `# networking device (present in the host)` \
   -device virtio-net-pci,netdev=net0 `# networking driver (present in the guest)` \
   -d guest_errors,int \
   # -cdrom ubuntu-live-server-arm64.iso #Only during OS install
+
+
+
+# working (also safe for offic wifi)
+#   -netdev user,id=net0,hostfwd=tcp::2222-:22 `# networking device (present in the host)` \
+
+# working (MAY NOT work with offic wifi)
+# -netdev vmnet-bridged,id=net0,ifname=en0 `# networking device (present in the host)` \
+
+
+# not working / crashing
+# -netdev vmnet-shared,id=net0 `# networking device (present in the host)` \
