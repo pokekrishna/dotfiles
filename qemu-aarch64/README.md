@@ -24,9 +24,12 @@ cd ~/Documents/virtual-machines/ubuntuaarch64
 sudo /PATH/TO/THIS/REPO/qemu-aarch64/from-iso.sh
 ```
 
-### 3. Copy networking files to /etc/netplan/ using `serial` mode
-IMPORTANT: NOT REQUIRED IF YOU ARE NOT USING VMNET SHARED DEVICE
+### 3. Copy networking files to /etc/netplan/ 
+This is required to ssh using local network whereas VM accesses internet through bridge network or user mode
 - [02-configure-guest-network.yaml](02-configure-guest-network.yaml)
+
+This is required for the guest to access internet via bridge network. Even if the network backend is set to user mode, this file will do no harm.
+- [03-configure-bridge-network.yaml](03-configure-bridge-network.yaml)
 ```sh
 sudo netplan apply
 ```

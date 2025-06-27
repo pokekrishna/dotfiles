@@ -1,0 +1,7 @@
+# File to be copied in guest as /etc/netplan/03-configure-bridge-network.yaml
+# Purpose: to get internet access in the guest via bridge network
+network:
+  version: 2
+  ethernets:
+    enp0s2:
+      dhcp4: true

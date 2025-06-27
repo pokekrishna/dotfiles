@@ -1,10 +1,8 @@
-# UPDATE: JUNE 26, 2025: This file was required in VM net shared Device, but now the recommended devices are VM net Bridge and user, so this file is not required
-
 # File to be copied in guest as /etc/netplan/02-configure-guest-network.yaml
-# This configures the enp0s4 interface with a static IP 192.168.64.2/24 and also enables DHCP for IPv4.
-# network:
-#   version: 2
-#   ethernets:
-#     enp0s4:
-#       addresses: [192.168.64.2/24] # change the IP address as needed
-#       dhcp4: true
+# Purpose: to provide a network between host and guest for ssh
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      addresses: [192.168.64.3/24] # change the IP address as needed
+      dhcp4: false

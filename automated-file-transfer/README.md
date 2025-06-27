@@ -25,5 +25,5 @@ Change the `DIR` variable and `--exclude` option
   Note: Use `--exclude` to exclude sub dir to sync. **Remeber**: Path is relative
 
 ```sh
-./file-transfer.sh
+./generic.sh vm1 /Users/krishnagupta/Documents/git-repos/repo-one
 ```
